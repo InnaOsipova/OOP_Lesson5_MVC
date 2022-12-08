@@ -14,13 +14,13 @@ public class ViewUser {
         this.userController = userController;
     }
 
-    public void run(){
+    public void run() throws Exception {
         Commands com = Commands.NONE;
 
         while (true) {
             try {
                 String command = prompt("Введите команду: ");
-                com = Commands.valueOf(command);
+                com = Commands.valueOf(command.toUpperCase());
             } catch (IllegalArgumentException e) {
                 System.out.println("Unknown command");
                 continue;
@@ -56,6 +56,15 @@ public class ViewUser {
                     String phone = prompt("Номер телефона: ");
                     String userID = prompt("Идентификатор пользователя: ");
                     userController.editUser(new User(userID, firstName, lastName, phone));
+                    break;
+                case DELETE:
+                    try {
+                        String userId = prompt("Идентификатор пользователя: ");
+                        userController.deleteUser(userId);
+                    }catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                    break;
             }
         }
     }

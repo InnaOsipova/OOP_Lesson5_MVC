@@ -1,6 +1,7 @@
 package personal.model;
 
 import java.util.List;
+import java.util.Queue;
 
 public interface Repository {
     List<User> getAllUsers();

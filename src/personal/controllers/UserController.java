@@ -40,5 +40,8 @@ public class UserController {
         validateUserData(user);
         repository.updateUser(user);
     }
+    public void deleteUser(String userId) throws Exception {
+        repository.deleteUser(userId);
+    }
 
 }

@@ -1,7 +1,9 @@
 package personal.model;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public class RepositoryFile implements Repository {
     private UserMapper mapper = new UserMapper();
@@ -53,6 +55,7 @@ public class RepositoryFile implements Repository {
         List<User> users = getAllUsers();
         users.remove(findUser(userID, users));
         saveUsers(users);
+
     }
 
     private User findUser(String userID, List<User> users) {
